@@ -68,3 +68,5 @@ function toHtmlEncode (str) {
 exports.trim = trim;
 exports.ltrim = ltrim;
 exports.rtrim = rtrim;
+exports.addComma = addComma;
+exports.toHtmlEncode = toHtmlEncode;
