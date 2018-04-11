@@ -33,6 +33,38 @@ function rtrim (str) {
     return str.replace( /(\s*|　*)$/, "");
 }
 
+/**
+ * 每三位加逗号间隔
+ * @Author   zyt
+ * @DateTime 2018-04-11T22:07:16+0800
+ * @param    {String}                 str 数字型字符串
+ */
+function addComma (str) {
+    str = str.split('').reverse().join('');
+
+    return num.match(/\d{1,3}/g).join(',').split('').reverse().join('');
+}
+
+/**
+ * 对字符串进行html编码，转义类似标签这种html
+ * @Author   zyt
+ * @DateTime 2018-04-11T22:13:58+0800
+ * @param    {String}                 str 待转的字符串
+ * @return   {String}                     转换完成的字符串
+ */
+function toHtmlEncode (str) {
+    str = str.replace(/&/g,"&amp;");
+    str = str.replace(/</g,"&lt;");
+    str = str.replace(/>/g,"&gt;");
+    str = str.replace(/\'/g,"&apos;");
+    str = str.replace(/\"/g,"&quot;");
+    str = str.replace(/\n/g,"<br>");
+    str = str.replace(/\ /g,"&nbsp;");
+    str = str.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
+
+    return str;
+}
+
 exports.trim = trim;
 exports.ltrim = ltrim;
 exports.rtrim = rtrim;
