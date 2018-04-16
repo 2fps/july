@@ -34,7 +34,7 @@ function rtrim (str) {
 }
 
 /**
- * 每三位加逗号间隔
+ * 给数字加千分符
  * @Author   zyt
  * @DateTime 2018-04-11T22:07:16+0800
  * @param    {String}                 str 数字型字符串
@@ -42,7 +42,10 @@ function rtrim (str) {
 function addComma (str) {
     str = str.split('').reverse().join('');
 
-    return num.match(/\d{1,3}/g).join(',').split('').reverse().join('');
+    return str.match(/\d{1,3}/g).join(',').split('').reverse().join('');
+    // 或者这么实现
+    // var reg = /(\d{1,3})(?=(\d{3})+($|\.))/g;
+    // return str.replace(reg,"$1,");
 }
 
 /**
