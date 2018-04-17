@@ -39,5 +39,44 @@ function getElesByClassName(name) {
     return eles;
 }
 
+/**
+ * 在某个DOM之后插入新的DOM节点
+ * @Author   zyt
+ * @DateTime 2018-04-17T20:47:32+0800
+ * @param    {Object}                 newEle    新的DOM节点
+ * @param    {Object}                 targetEle 目标节点
+ */
+function insertAfter (newEle, targetEle) {
+    var parent = targetEle.parentNode;
+
+    if (parent.lastChild == targetEle) {
+        parent.appendChild(newEle);
+    } else {
+        parent.insertBefore(newEle, targetEle.nextSibling);
+    }
+}
+
+/**
+ * 给DOM节点增加新的class样式
+ * @Author   zyt
+ * @DateTime 2018-04-17T20:51:04+0800
+ * @param    {Object}                 ele   DOM节点
+ * @param    {String}                 value 样式字符串
+ */
+function addClass (ele, value) {
+    var newClassName = '';
+
+    if (!ele.className) {
+        // 没有类时，直接添加
+        ele.className = value;
+    } else {
+        newClassName = ele.className;
+        newClassName += ' ' + value;
+        ele.className = newClassName;
+    }
+}
+
 exports.getStyle = getStyle;
 exports.getElesByClassName = getElesByClassName;
+exports.insertAfter = insertAfter;
+exports.addClass = addClass;
