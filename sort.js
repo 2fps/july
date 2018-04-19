@@ -26,4 +26,32 @@ function bubbleSort (arr) {
     return arr;
 }
 
+/**
+ * 选择排序
+ * @Author   zyt
+ * @DateTime 2018-04-19T23:02:51+0800
+ * @param    {Array}                 arr    要排序的数组
+ * @return   {Array}                        排完序后的数组
+ */
+function selectionSort (arr) {
+    var len = arr.length,
+        min,
+        temp;
+
+    for (var i = 0; i < len - 1; ++i) {
+        min = i;
+        for (var j = i + 1; j < len; ++j) { // 寻找最小的数
+            if (arr[j] < arr[min]) {
+                min = j; // 保存下标
+            }
+        }
+        temp = arr[min];
+        arr[min] = arr[i];
+        arr[i] = temp;
+    }
+
+    return arr;
+}
+
 exports.bubbleSort = bubbleSort;
+exports.selectionSort = selectionSort;
