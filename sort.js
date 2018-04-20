@@ -53,5 +53,32 @@ function selectionSort (arr) {
     return arr;
 }
 
+/**
+ * 插入排序
+ * @Author   zyt
+ * @DateTime 2018-04-20T21:40:34+0800
+ * @param    {Array}                 arr    要排序的数组
+ * @return   {Array}                        排完序后的数组
+ */
+function insertionSort (arr) {
+    var len = arr.length,
+        preIndex,
+        current;
+
+    for (var i = 1; i < len; ++i) {
+        preIndex = i - 1;
+        current = arr[i];
+
+        while(preIndex >= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex + 1] = current;
+    }
+
+    return arr;
+}
+
 exports.bubbleSort = bubbleSort;
 exports.selectionSort = selectionSort;
+exports.insertionSort = insertionSort;
