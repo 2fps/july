@@ -69,7 +69,7 @@ function insertionSort (arr) {
         preIndex = i - 1;
         current = arr[i];
 
-        while(preIndex >= 0 && arr[preIndex] > current) {
+        while (preIndex >= 0 && arr[preIndex] > current) {
             arr[preIndex + 1] = arr[preIndex];
             preIndex--;
         }
@@ -79,6 +79,38 @@ function insertionSort (arr) {
     return arr;
 }
 
+/**
+ * 希尔排序
+ * @Author   zyt
+ * @DateTime 2018-04-21T22:31:48+0800
+ * @param    {Array}                 arr    要排序的数组
+ * @return   {Array}                        排完序后的数组
+ */
+function shellSort(arr) {
+　　var len = arr.length,
+　　　　　　temp,
+　　　　　　gap = 1;
+
+　　while (gap < len / 5) { //动态定义间隔序列
+　　　　gap = gap * 5 + 1;
+　　}
+
+　　for (gap; gap > 0; gap = Math.floor(gap / 5)) {
+　　　　for (var i = gap; i < len; ++i) {
+　　　　　　temp = arr[i];
+　　　　　　for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+　　　　　　　　arr[j + gap] = arr[j];
+　　　　　　}
+　　　　　　arr[j + gap] = temp;
+　　　　}
+　　}
+
+　　return arr;
+}
+
+
+
 exports.bubbleSort = bubbleSort;
 exports.selectionSort = selectionSort;
 exports.insertionSort = insertionSort;
+exports.shellSort = shellSort;
