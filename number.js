@@ -16,4 +16,27 @@ function isDigit (value) {
     }
 }
 
+/**
+ * 仅判断是否是存数字
+ * @Author   zyt
+ * @DateTime 2018-04-26T19:43:36+0800
+ * @param    {Number}                 num 要判断的数字
+ * @return   {Boolean}                    是否是数字
+ */
+function isNumber (num) {
+    var re = /^\d*$/;
+
+    if (Object.prototype.toString.call(num) !== '[object Number]') {
+        // 只剩下数字
+        return false;
+    }
+    // 剩下 NaN、Number.POSITIVE_INFINITY、Number.NEGATIVE_INFINITY
+
+    if (null == (num + '').match(re)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 exports.isDigit = isDigit;
