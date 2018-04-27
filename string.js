@@ -68,8 +68,20 @@ function toHtmlEncode (str) {
     return str;
 }
 
+/**
+ * 驼峰命名转下划线
+ * @Author   zyt
+ * @DateTime 2018-04-27T23:56:18+0800
+ * @param    {String}                 str 要转的字符串
+ * @return   {String}                     转换成的字符串
+ */
+function toUnderLine (str) {
+    return str.match(/^[a-z][a-z0-9]+|[A-Z][a-z0-9]*/g).join('_').toLowerCase();
+}
+
 exports.trim = trim;
 exports.ltrim = ltrim;
 exports.rtrim = rtrim;
 exports.addComma = addComma;
 exports.toHtmlEncode = toHtmlEncode;
+exports.toUnderLine = toUnderLine;
