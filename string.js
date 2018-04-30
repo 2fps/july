@@ -55,19 +55,24 @@ function addComma (str) {
  * @param    {String}                 str 待转的字符串
  * @return   {String}                     转换完成的字符串
  */
-function toHtmlEncode (str) {
-    str = str.replace(/&/g,"&amp;");
-    str = str.replace(/</g,"&lt;");
-    str = str.replace(/>/g,"&gt;");
-    str = str.replace(/\'/g,"&apos;");
-    str = str.replace(/\"/g,"&quot;");
-    str = str.replace(/\n/g,"<br>");
-    str = str.replace(/\ /g,"&nbsp;");
-    str = str.replace(/\t/g,"&nbsp;&nbsp;&nbsp;&nbsp;");
+function safeString(string) {
+    if(!string) {
+        return "";
+    }
+    var escape = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+        "`": "&#x60;"
+    },
+        badChars = /[&<>"'`]/g;
 
-    return str;
+    return string.replace(badChars, function(chr) {
+        return escape[chr];
+    });
 }
-
 /**
  * 驼峰命名转下划线
  * @Author   zyt
@@ -79,9 +84,34 @@ function toUnderLine (str) {
     return str.match(/^[a-z][a-z0-9]+|[A-Z][a-z0-9]*/g).join('_').toLowerCase();
 }
 
+/**
+ * 获取字符串按字节的长度，主要是用来算中文的
+ * @Author   zyt
+ * @DateTime 2018-04-30T15:49:09+0800
+ * @param    {String}                 val   要检测的字符串
+ * @param    {Number}                 chLen 一个中文的位数，默认是2
+ * @return   {Number}                       字符串的长度的长度
+ */
+function getByteLength (val, chLen) {
+    var byteValLen = 0,
+        len = val.length;
+
+    chLen = chLen || 2;
+
+    for (var i = 0; i < len; ++i) {
+        if (null !== val[i].match(/[^\x00-\xff]/ig)) {
+            byteValLen += chLen;
+        }  else {
+            byteValLen += 1;
+        }
+    }
+    return byteValLen;
+}
+
 exports.trim = trim;
 exports.ltrim = ltrim;
 exports.rtrim = rtrim;
 exports.addComma = addComma;
-exports.toHtmlEncode = toHtmlEncode;
+exports.safeString = safeString;
 exports.toUnderLine = toUnderLine;
+exports.getByteLength = getByteLength;
