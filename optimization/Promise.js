@@ -7,11 +7,11 @@ var Promise = function (fn) {
 
     function resolve () {
         me.resolve();
-    };
+    }
 
     function reject () {
         me.reject();
-    };
+    }
 
     fn(resolve, reject);
 
@@ -48,8 +48,8 @@ Promise.prototype.fail = function (fn) {
 };
 
 Promise.prototype.then = function (reFn, rjFn) {
-    this.reQueue.push(fn);
-    this.rjQueue.push(fn);
+    this.reQueue.push(reFn);
+    this.rjQueue.push(rjFn);
 
     return this;
 };

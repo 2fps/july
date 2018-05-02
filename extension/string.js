@@ -108,6 +108,18 @@ function getByteLength (val, chLen) {
     return byteValLen;
 }
 
+/**
+ * 首字母大写
+ * @Author   zyt
+ * @DateTime 2018-05-02T23:13:57+0800
+ * @param    {String}                 str [description]
+ * @return   {String}                     转化后的字符串
+ */
+function capitalize (str) {
+    return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+
 exports.trim = trim;
 exports.ltrim = ltrim;
 exports.rtrim = rtrim;
@@ -115,3 +127,4 @@ exports.addComma = addComma;
 exports.safeString = safeString;
 exports.toUnderLine = toUnderLine;
 exports.getByteLength = getByteLength;
+exports.capitalize = capitalize;
