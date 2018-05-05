@@ -77,7 +77,49 @@ function addClass (ele, value) {
     }
 }
 
+/**
+ * 检测元素是否有对应的类
+ * @Author   zyt
+ * @DateTime 2018-05-05T20:35:04+0800
+ * @param    {Object}                 ele   DOM元素
+ * @param    {String}                 value 需要匹配的class类
+ * @return   {Boolean}                      该DOM是否有此class
+ */
+function hasClass (ele, value) {
+    var className = ele.className,
+        names = [];
+
+    if (!className) {
+        // 没有classname，直接返回false
+        return false;
+    }
+    // 用数组保存多个classname
+    names = className.split(' ');
+
+    if (~names.indexOf(value)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * 移除某个DOM元素的class类
+ * @Author   zyt
+ * @DateTime 2018-05-05T20:39:24+0800
+ * @param    {Object}                 ele   DOM元素
+ * @param    {String}                 value 需要删除的class类
+ */
+function removeClass (ele, value) {
+    if (hasClass(ele, value)) {
+        var reg = new RegExp('(\\s|^)' + value + '(\\s|$)');
+        ele.className = ele.className.replace(reg, '');
+    }
+}
+
 exports.getStyle = getStyle;
 exports.getElesByClassName = getElesByClassName;
 exports.insertAfter = insertAfter;
 exports.addClass = addClass;
+exports.hasClass = hasClass;
+exports.removeClass = removeClass;

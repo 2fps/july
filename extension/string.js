@@ -56,7 +56,7 @@ function addComma (str) {
  * @return   {String}                     转换完成的字符串
  */
 function safeString(string) {
-    if(!string) {
+    if (!string) {
         return "";
     }
     var escape = {
@@ -117,6 +117,13 @@ function getByteLength (val, chLen) {
  */
 function capitalize (str) {
     return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
+}
+
+function repeatStr (str, count) {
+    var txt = '',
+        sArr = [];
+
+        
 }
 
 
