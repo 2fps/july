@@ -34,5 +34,30 @@ function indexOf (arr, val) {
     }
 }
 
+/**
+ * 用于判断两个数组是否相等
+ * @Author   zyt
+ * @DateTime 2018-05-06T21:51:39+0800
+ * @param    {Array}                 arr1   数组1
+ * @param    {Array}                 arr2   数组2
+ * @return   {Boolean}                      是否相等
+ */
+function arrayEqual (arr1, arr2) {
+    if (arr1 === arr2) {
+        return true;
+    }
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    for (var i = 0, len = arr1.length; i < len; ++i) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 exports.isArray = isArray;
 exports.indexOf = indexOf;
+exports.arrayEqual = arrayEqual;
