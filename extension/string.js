@@ -119,12 +119,33 @@ function capitalize (str) {
     return str.slice(0, 1).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-function repeatStr (str, count) {
-    var txt = '',
-        sArr = [];
+/**
+ * 把url参数解析成一个对象
+ * @Author   zyt
+ * @DateTime 2018-05-13T22:00:17+0800
+ * @param    {String}                 url url字符串
+ * @return   {Object}                     解析后的对象
+ */
+function parseQuryString (url) {
+    var obj = {},
+        str = '',
+        arr = [],
+        item = '';
 
-        
+    if (~url.indexOf('?')) {
+        str = url.split('?')[1];
+        arr = str.split('&');
+
+        for (var i = 0, len = arr.length; i < len; ++i) {
+            item = arr[i];
+            item = item.split('=');
+            obj[item[0]] = item[1];
+        }
+    }
+
+    return obj;
 }
+
 
 
 exports.trim = trim;
@@ -135,3 +156,4 @@ exports.safeString = safeString;
 exports.toUnderLine = toUnderLine;
 exports.getByteLength = getByteLength;
 exports.capitalize = capitalize;
+exports.parseQuryString = parseQuryString;
