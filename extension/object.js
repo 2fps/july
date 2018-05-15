@@ -1,16 +1,17 @@
-create = (function () {
-    function F () {}
+/**
+ * 低版本IE下Object.create的兼容方案
+ * @Author   zyt
+ * @DateTime 2018-05-15T21:42:56+0800
+ * @param    {Object}                 proto 需要继承的对象
+ * @return   {Object}                       新的对象
+ */
+function create (proto) {
+    var f = function () {};
 
-    return function (o) {
-        if (arguments.length != 1) {
-            throw new Error('Object.create implementation only accepts one parameter.');
-        }
+    f.prototype = proto;
 
-        F.prototype = o;
-
-        return new F();
-    };
-})();
+    return new f();
+}
 
 /**
  * 检测对象是否是空对象，如{}
