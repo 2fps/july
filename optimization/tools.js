@@ -5,16 +5,16 @@
  * @param    {Object|Array}                 obj 拷贝类型
  * @return   {Objct|Array}                      浅拷贝结果
  */
-function shallowCopy (obj) {
+function shallowCopy(obj) {
     var result = '[object Object]' === Object.prototype.toString.call(obj) ? [] : {};
 
     for (var i in obj) {
         if (obj.hasOwnProperty(i)) {
-            result[i] = obj[i];
+            result[i] = obj[i]
         }
     }
 
-    return result;
+    return result
 }
 
 /**
@@ -24,7 +24,7 @@ function shallowCopy (obj) {
  * @param    {Object|Array}                 obj 拷贝类型
  * @return   {Objct|Array}                      深拷贝结果
  */
-function deepCopy (obj) {
+function deepCopy(obj) {
     var str,
         result = '[object Object]' === Object.prototype.toString.call(obj) ? [] : {};
 

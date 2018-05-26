@@ -60,3 +60,4 @@ function zeroPadding(num) {
 }
 
 exports.colorRgb = colorRgb;
+exports.colorHex = colorHex;

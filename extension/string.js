@@ -126,7 +126,7 @@ function capitalize (str) {
  * @param    {String}                 url url字符串
  * @return   {Object}                     解析后的对象
  */
-function parseQuryString (url) {
+function parseQueryString (url) {
     var obj = {},
         str = '',
         arr = [],
@@ -156,4 +156,4 @@ exports.safeString = safeString;
 exports.toUnderLine = toUnderLine;
 exports.getByteLength = getByteLength;
 exports.capitalize = capitalize;
-exports.parseQuryString = parseQuryString;
+exports.parseQueryString = parseQueryString;
