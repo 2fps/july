@@ -203,6 +203,7 @@ var executant = {
         _success = 0;
         _fail = 0;
         _pause = false;
+        _nowFn = null;
     },
     // 成功处理函数
     succeed: function() {
